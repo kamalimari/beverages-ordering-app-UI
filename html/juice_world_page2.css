@@ -1,0 +1,52 @@
+body {
+  background: url("juice_background.jpg") no-repeat fixed center;
+
+}
+h1
+{
+margin-left:25%;
+}
+
+.button1
+{
+margin-left:25%;
+height:25px;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  min-width: 50px;
+
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+      outline: none;
+
+}
+
+.btn:hover {
+  opacity: 5;
+
+}
