@@ -1,0 +1,57 @@
+h1
+{
+ text-align:center;
+ position: relative;
+
+}
+
+
+.button1 {
+  width: 100px;
+  height: 50px;
+  background: #ff3333;
+  position: absolute;
+  animation-name: Employee;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border-radius:45%;
+}
+
+.button2 {
+  width: 100px;
+  height: 50px;
+  background: #ff3333;
+  position: absolute;
+  animation-name:Vendor ;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border-radius:45%;
+}
+
+.button3{
+  width: 100px;
+  height: 50px;
+  background: #ff3333;
+  position: absolute;
+  animation-name: Guest;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border-radius:45%;
+}
+
+@keyframes Employee {
+  from {left: 0px;}
+  to {left: 700px; background-color: #ff4d94;}
+}
+@keyframes Vendor{
+  from {top: 0px;}
+  to {top: 200px; background-color: #ff4d94;}
+  from {top: 200px;background-color: #ff4d94;}
+  to {left: 400px; background-color: #ff4d94;}
+}
+@keyframes Guest {
+  from {top: 0px;}
+  to {top: 200px; background-color: #ff4d94;}
+  from {top: 200px;background-color: #ff4d94;}
+  to {left: 1000px; background-color: #ff4d94;}
+}

@@ -1,0 +1,27 @@
+h1{
+text-align:center;
+color: #ff0000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 22%;
+  padding: 0px;
+  border: 1px solid #ddd;
+  margin:4px;
+}
+
+.row {
+
+  clear: float;
+  display: table;
+  }
+
+  figcaption
+  {
+  color:#3385ff;
+  }
