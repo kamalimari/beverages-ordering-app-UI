@@ -8,20 +8,35 @@ color: #ff0000;
 }
 
 .column {
-  float: left;
-  width: 22%;
+
+  width:27%;
+  height: 20%;
   padding: 0px;
   border: 1px solid #ddd;
-  margin:4px;
+  margin:20px;
 }
 
 .row {
+ display:flex;
+ flex-wrap: wrap;
+ flex-direction: row;
+ background-color: DodgerBlue;
+ border: 5px solid red;
+ width:70%;
 
-  clear: float;
-  display: table;
+ float:left;
+ box-sizing:border-box;
   }
 
   figcaption
   {
   color:#3385ff;
+  }
+
+
+  .cart{
+  float:right;
+  border: 5px solid red;
+width:30%;
+ box-sizing:border-box;
   }
