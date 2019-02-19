@@ -2,18 +2,23 @@ h1
 {
  text-align:center;
 
+}
 
+body {
+  background: url("jpg_css_files/who_am_i_background.jpg") no-repeat fixed center;
+  background-size:cover;
 
 }
+
 
 .button1 {
   width: 150px;
   height: 60px;
-  background: #ff3333;
+  background:#ffadff;
   margin-left:45%;
 
   animation-name: Employee;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   border-radius:45%;
 }
@@ -21,12 +26,12 @@ h1
 .button2 {
   width: 150px;
   height: 60px;
-  background: #ff3333;
+  background: #ffadff;
   margin-top:20%;
   float:left;
 
   animation-name:Vendor;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   border-radius:45%;
 }
@@ -34,28 +39,28 @@ h1
 .button3 {
   width: 150px;
   height: 60px;
-  background: #ff3333;
+  background: #ffadff;
 
   margin-top:20%;
   float:right;
   animation-name: Guest;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   border-radius:45%;
 }
 @keyframes Employee {
   from {margin-left:45%;}
-  to {margin-top: 3%; background-color: #ff4d94;}
+  to {margin-top: 3%; background-color:#ff70ff;}
 }
 
 
 @keyframes Vendor {
   from {margin-top:10%;}
-  to {margin-left: 400px; background-color: #ff4d94;}
+  to {margin-left: 400px; background-color: #ff70ff;}
 
 }
 
 @keyframes Guest {
   from {margin-top:10%;}
-  to {margin-right: 400px; background-color: #ff4d94;}
+  to {margin-right: 400px; background-color: #ff70ff;}
 }

@@ -1,5 +1,5 @@
 body {
-  background: url("welcomepage.jpg") no-repeat fixed center;
+  background: url("jpg_css_files/welcomepage.jpg") no-repeat fixed center;
   background-size:cover;
 
 }
@@ -14,40 +14,15 @@ h1
     text-align:center;
  }
 
-
-.button1 {
-  background-color: white;
-  float:left;
-  margin-left:25%;
-  width:10%;
-  height:30px;
+.juice_world
+{
+float:left;
 
 }
 
-.button1:hover {
-  background-color: silver;
-  float:left;
-  margin-left:25%;
-  width:10%;
-    height:30px;
-
-
-
-}
-.button2 {
-  background-color: white;
-  width:10%;
-  float:right;
-  margin-right:25%;
-    height:30px;
-}
-
-.button2:hover {
-  background-color: silver;
-  float:right;
-  margin-right:25%;
-  width:10%;
-    height:30px;
+.madras_coffee
+{
+float:right;
 
 
 }
