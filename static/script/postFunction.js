@@ -9,4 +9,5 @@ function postUserNameAndPassword(){
 	formData.append("nam", document.getElementById("nam").value);
 	formData.append("employee_id", document.getElementById("employee_id").value);
 	request.send(formData);
+	print(formData)
 }
