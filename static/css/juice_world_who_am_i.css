@@ -5,7 +5,7 @@ h1
 }
 
 body {
-  background: url("jpg_css_files/who_am_i_background.jpg") no-repeat fixed center;
+  background: url("../assets/images/who_am_i_background.jpg") no-repeat fixed center;
   background-size:cover;
 
 }

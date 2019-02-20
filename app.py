@@ -5,17 +5,27 @@ from modules.posting_data_in_database import posting_data
 
 app = Flask(__name__)
 CORS(app)
-connection = psycopg2.connect("dbname=postgres user=admin")
+connection = psycopg2.connect("dbname=beverages user=admin")
 
 
-def __init__(self, nam, employee_id):
-    self.nam = nam
-    self.employee_id = employee_id
+def __init__(self, employee_name, password):
+    self.employee_name = employee_name
+    self.password = password
 
 
 @app.route('/')
 def index():
-    return render_template('getting_data.html')
+    return render_template('welcome_page.html')
+
+
+@app.route('/who_am_i')
+def page2():
+    return render_template('juice_world_who_am_i.html')
+
+
+@app.route('/login_page')
+def page3():
+    return render_template('juice_world_login_page.html')
 
 
 @app.route('/post-data', methods=['POST'])

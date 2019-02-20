@@ -1,6 +1,6 @@
 def posting_data(connection, user_data):
-    cursor = connection.cursor
-    cursor.execute("""insert into employee_details(nam, employee_id) values(%s, %s);""",
-                   (user_data['nam'], user_data['employee_id']))
+    cursor = connection.cursor()
+    cursor.execute("""insert into report(employee_name, password) values(%s, %s);""",
+                   (user_data['employee_name'], user_data['password']))
     connection.commit()
     cursor.close()

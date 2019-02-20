@@ -1,5 +1,5 @@
 body {
-  background: url("jpg_css_files/welcomepage.jpg") no-repeat fixed center;
+  background: url("../assets/images/welcomepage.jpg") no-repeat fixed center;
   background-size:cover;
 
 }

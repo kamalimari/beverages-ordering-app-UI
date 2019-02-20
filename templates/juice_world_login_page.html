@@ -4,16 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-      <link rel="stylesheet" href="../css/juice_world_login_page.css">
+      <link rel="stylesheet" href="../static/css/juice_world_login_page.css">
   <script>
 
-function validation(){
-  var input = document.forms["my_form"]["user_name"]["employee_ID"].value;
-  if(input =="")
-  {
-  alert("Name must be filled out");
-  }
-  }
 
 </script>
 
@@ -21,20 +14,21 @@ function validation(){
 
 
 <body>
-
-<form name="my_form" action="ordering_page.html" style="max-width:500px;margin:auto" onsubmit="validation()" >
+<form action="/post-data" method=post>
+  <div style="max-width:500px;margin:auto" >
   <h1>Login</h1>
   <div class="align_using_flex">
     <i class="fa fa-user icon"></i>
-    <input class="input-field" type="text" placeholder="Username" name="user_name">
+    <input class="input-field" type="text" placeholder="Employee_name" name="employee_name">
   </div>
 
-    <div class="align_using_flex">
+  <div class="align_using_flex">
     <i class="fa fa-key icon"></i>
-    <input class="input-field" type="password" placeholder="Employee ID" name="employee_ID">
+    <input class="input-field" type="password" placeholder="Password" name="password">
   </div>
 
   <button type="submit" class="button1" style="height:60px">Login</button>
+</div>
 </form>
 
 </body>

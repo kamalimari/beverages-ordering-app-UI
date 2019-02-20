@@ -1,6 +1,5 @@
 body {
-  background: url("jpg_css_files/juice_background.jpg") no-repeat fixed center;
-
+  background: url("../assets/images/juice_background.jpg") no-repeat fixed center;
 }
 h1
 {
