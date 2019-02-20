@@ -1,11 +1,13 @@
 import psycopg2
 from flask import Flask, render_template, request
 from flask_cors import CORS
-from modules.posting_data_in_database import posting_data
+from modules.posting_juice_world_data_to_database import posting_data
+from modules.posting_madras_coffee_data_to_database import posting_data
 
 app = Flask(__name__)
 CORS(app)
 connection = psycopg2.connect("dbname=beverages user=admin")
+connection = psycopg2.connect("dbname=madras_coffee user=admin")
 
 
 def __init__(self, employee_name, password):
@@ -18,13 +20,18 @@ def index():
     return render_template('welcome_page.html')
 
 
-@app.route('/who_am_i')
+@app.route('/who_am_i_for_juice_world')
 def page2():
     return render_template('juice_world_who_am_i.html')
 
 
-@app.route('/login_page')
+@app.route('/who_am_i_for_madras_coffee')
 def page3():
+    return render_template('juice_world_who_am_i.html')
+
+
+@app.route('/login_page')
+def page4():
     return render_template('juice_world_login_page.html')
 
 
