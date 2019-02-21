@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
       <link rel="stylesheet" href="../static/css/ordering_page.css">
+<script src="../static/script/increment_and_decrement_of_cart.js">
+</script>
 </head>
 <body>
 <h1>JUICE WORLD</h1>
@@ -12,69 +14,72 @@
 <div class="row" >
 
     <div class="column">
-        <input type="image" src="jpg_html_files/orangejuice.jpg" alt="orange" width="100%" height="198px" >
+        <input type="image" src="../static/assets/images/orangejuice.jpg" alt="orange" width="100%" height="198px" >
         <figcaption>Orange Juice </figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
     </div>
 
 
     <div class="column">
-         <input type="image" src="jpg_html_files/banana-juice.jpg" alt="banana" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/banana-juice.jpg" alt="banana" width="100%" height="198px">
         <figcaption>Banana Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
     </div>
 
 
     <div class="column">
-         <input type="image" src="jpg_html_files/pineapple.jpg" alt="pineapple" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/pineapple.jpg" alt="pineapple" width="100%" height="198px">
         <figcaption>Pineapple Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
     <div class="column">
-         <input type="image" src="jpg_html_files/kiwi.jpg" alt="kiwi" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/kiwi.jpg" alt="kiwi" width="100%" height="198px">
         <figcaption>Kiwi Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
     <div class="column">
-         <input type="image" src="jpg_html_files/lemon.jpg" alt="lemon" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/lemon.jpg" alt="lemon" width="100%" height="198px">
         <figcaption>Lemon Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
     <div class="column">
-         <input type="image" src="jpg_html_files/mango.jpg" alt="mango" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/mango.jpg" alt="mango" width="100%" height="198px">
         <figcaption>Mango Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
 
     <div class="column">
-         <input type="image" src="jpg_html_files/mosambi_juice.jpg" alt="mosambi" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/mosambi_juice.jpg" alt="mosambi" width="100%" height="198px">
         <figcaption>mosambi Juice</figcaption>
         <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
     <div class="column">
-         <input type="image" src="jpg_html_files/pomegranate.jpg" alt="pomengranate" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/pomegranate.jpg" alt="pomengranate" width="100%" height="198px">
         <figcaption>Pomengranate Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
     <div class="column">
-         <input type="image" src="jpg_html_files/apple.jpg" alt="apple" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/apple.jpg" alt="apple" width="100%" height="198px">
         <figcaption>Apple Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
+        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
+    <form id="cart">
+<input type='text' name='quantity' id='quantity' value='1' readonly = 'readonly'/>
+<input type='button' name='addition' value='+'onclick=increment_buttons()/>
+<input type='button' name='subtract' value='-' onclick=decrement_buttons()/>
+</form>
 
 
 
 
-</div>
 
-<div class="cart"> cart</div>
 
 
 
