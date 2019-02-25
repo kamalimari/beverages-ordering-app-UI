@@ -1,8 +1,8 @@
 import psycopg2
 from flask import Flask, render_template, request
 from flask_cors import CORS
-from modules.posting_juice_world_data_to_database import posting_data
-from modules.posting_madras_coffee_data_to_database import posting_data
+from modules.posting_juice_world_data_to_database import juice_world_data
+from modules.posting_madras_coffee_data_to_database import madras_coffee_data
 
 app = Flask(__name__)
 CORS(app)
@@ -20,24 +20,35 @@ def index():
     return render_template('welcome_page.html')
 
 
-@app.route('/who_am_i_for_juice_world')
-def page2():
+@app.route('/juice_world_who_am_i')
+def who_am_i_juice_world():
     return render_template('juice_world_who_am_i.html')
 
 
-@app.route('/who_am_i_for_madras_coffee')
-def page3():
-    return render_template('juice_world_who_am_i.html')
+@app.route('/madras_coffee_who_am_i')
+def who_am_i_madras_coffee():
+    return render_template('madras_coffee_who_am_i.html')
 
 
-@app.route('/login_page')
-def page4():
+@app.route('/login_page_for_juice_world')
+def login_page_juice_world():
     return render_template('juice_world_login_page.html')
 
 
-@app.route('/post-data', methods=['POST'])
-def post_user():
-    posting_data(connection, request.form)
+@app.route('/login_page_for_madras_coffee')
+def login_page_madras_coffee():
+    return render_template('madras_coffee_login_page.html')
+
+
+@app.route('/post_data_juice_world', methods=['POST'])
+def post_data_juice_world():
+    juice_world_data(connection, request.form)
+    return render_template('display.html', shared=request.form)
+
+
+@app.route('/post_data_madras_coffee', methods=['POST'])
+def post_data_madras_coffee():
+    madras_coffee_data(connection, request.form)
     return render_template('display.html', shared=request.form)
 
 
