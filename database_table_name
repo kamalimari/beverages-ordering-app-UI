@@ -1,0 +1,15 @@
+database name: final_report
+    create database final_report;
+
+employee detais(table);
+create table employee_detais(user_id numeric,employee_name varchar(30),password numeric,primary key(user_id));
+
+
+items (table):
+create table items(is_available varchar(10),serial_id numeric,type varchar(30),id numeric,name_of_items varchar(30),cost numeric,primary key(serial_id));
+
+order_page(table):
+create table order_page(date numeric,name_id numeric, item_id numeric,count numeric,primary key(name_id,item_id),foreign key(name_id) references employee_detais(user_id),foreign key(item_id) references items(serial_id));
+
+insert values in items:
+insert into items values ('yes',1,'cold',1,'apple_juice'),('yes',1,'cold',1,'apple_juice'),('yes',2,'cold',1,'orange'),('yes',5,'cold',2,'tea'),('yes',6,'cold',2,'coffee'),('yes',7,'cold',2,'ginger_tea');
