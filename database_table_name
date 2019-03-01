@@ -1,15 +1,18 @@
-database name: final_report
-    create database final_report;
+database name: beverages
+    create database beverages;
 
-employee detais(table);
-create table employee_detais(user_id numeric,employee_name varchar(30),password numeric,primary key(user_id));
+employee details(table);
+create table employee_details(name_id numeric,employee_name varchar(30),password numeric,primary key(name_id));
 
 
 items (table):
-create table items(is_available varchar(10),serial_id numeric,type varchar(30),id numeric,name_of_items varchar(30),cost numeric,primary key(serial_id));
+create table items(is_available varchar(10),serial_id serial,type varchar(30),id numeric,name_of_items varchar(30),cost numeric,primary key(serial_id));
 
 order_page(table):
-create table order_page(date numeric,name_id numeric, item_id numeric,count numeric,primary key(name_id,item_id),foreign key(name_id) references employee_detais(user_id),foreign key(item_id) references items(serial_id));
+create table order_page(date date default current_date,name_id numeric, serial_id integer,count numeric,foreign key(name_id) references employee_details(name_id),foreign key(serial_id) references items(serial_id));
 
 insert values in items:
-insert into items values ('yes',1,'cold',1,'apple_juice'),('yes',1,'cold',1,'apple_juice'),('yes',2,'cold',1,'orange'),('yes',5,'cold',2,'tea'),('yes',6,'cold',2,'coffee'),('yes',7,'cold',2,'ginger_tea');
+insert into items values ('yes',default,'cold',1,'apple_juice',30),('yes',default,'cold',1,'pineapple_juice',40),('yes',default,'cold',1,'orange_juice',40),('yes',default,'hot',2,'tea',15),('yes',default,'hot',2,'coffee',15),('yes',default,'hot',2,'ginger_tea',18);
+
+inner join:
+select * from items inner join order_page on items.serial_id = order_page.serial_id;
