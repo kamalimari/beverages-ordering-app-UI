@@ -5,14 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/submission" method="POST" >
+<form action="/update" method="POST" >
     <ul>
         {% for item in items %}
-        <li style="list-style-type:none;"><input type="checkbox" name="{{item}}" >{{ item }}
+        <li style="list-style-type:none;"><input type="checkbox" name="{{item}}" >{{item}}
         </li>
         {% endfor %}
     </ul>
     <input type="submit" value="Submit">
+</form>
 
 </body>
 </html>
