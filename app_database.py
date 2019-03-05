@@ -40,24 +40,40 @@ def vendor_login_page_juice_world():
 
 @app.route('/employee_validation_juice_world', methods=['POST'])
 def employee_validation_juice_world():
-    return checking_name_and_password(connection, request.form)
+    return checking_name_and_password_juice_world(connection, request.form)
 
 
-def checking_name_and_password(connection, validation_data):
+def checking_name_and_password_juice_world(connection, validation_data):
     cursor = connection.cursor()
     cursor.execute(
         "select password from employee_details where password = %(password)s ",
         {'password': validation_data['password']})
-    returned_rows = cursor.fetchall()
-    rows_ = returned_rows[0]
+    returned_cold = cursor.fetchall()
+    cold_ = returned_cold[0]
     insert_the_password_id = "insert into order_page (name_id) (select name_id from employee_details where password = %s)"
-    cursor.execute(insert_the_password_id, (rows_[0],))
+    cursor.execute(insert_the_password_id, (cold_[0],))
     connection.commit()
     cursor.close()
-    if len(returned_rows) == 0:
+    if len(returned_cold) == 0:
         return render_template('welcome_page.html')
     else:
-        return render_template('ordering_page.html')
+        return hot_items()
+
+
+def hot_items():
+    rows = database_selected_hot_items()
+    cold_items = []
+    for row in rows:
+        cold_items.append(row[0])
+    return render_template("available_cold_items.html", items=cold_items)
+
+
+def database_selected_hot_items():
+    cursor = connection.cursor()
+    cursor.execute("select  name_of_items from items where is_available  ='yes' and type = 'cold'")
+    record = cursor.fetchall()
+    cursor.close()
+    return record
 
 
 @app.route('/vendor_validation_juice_world', methods=['POST'])
@@ -73,7 +89,6 @@ def checking_name_and_password_for_vendor_juice_world(connection, validation_dat
     returned_cold = cursor.fetchall()
     cursor.execute(
         "update items set is_available = 'yes' WHERE type = 'cold'")
-
     cursor.close()
     if len(returned_cold) == 0:
         return render_template('welcome_page.html')
@@ -100,7 +115,7 @@ def database_connection_cold():
 
 @app.route('/update_cold', methods=['POST'])
 def update_cold():
-    return update_cold_availability_to_database(connection, request.form)
+    update_cold_availability_to_database(connection, request.form)
 
 
 def update_cold_availability_to_database(connection, update_data):
@@ -179,9 +194,10 @@ def checking_name_and_password_madras_coffee(connection, validation_data):
         "select password from employee_details where password = %(password)s ",
         {'password': validation_data['password']})
     returned_hot = cursor.fetchall()
-    cursor.execute(
-        "update items set is_available = 'yes' WHERE type = 'hot'")
-
+    hot_ = returned_hot[0]
+    insert_the_password_id = "insert into order_page (name_id) (select name_id from employee_details where password = %s)"
+    cursor.execute(insert_the_password_id, (hot_[0],))
+    connection.commit()
     cursor.close()
     if len(returned_hot) == 0:
         return render_template('welcome_page.html')
@@ -200,6 +216,7 @@ def checking_name_and_password_for_vendor_madras_coffee(connection, validation_d
         "select vendor_password from vendor_details where vendor_password = %(password)s and shop_no = '2'",
         {'password': validation_data['password']})
     returned_cold = cursor.fetchall()
+    cursor.execute("update items set is_available = 'yes' WHERE type = 'hot'")
     cursor.close()
     if len(returned_cold) == 0:
         return render_template('welcome_page.html')
