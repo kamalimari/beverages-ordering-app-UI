@@ -76,6 +76,26 @@ def database_selected_hot_items():
     return record
 
 
+@app.route('/update_to_order_page', methods=['POST'])
+def update_to_order_page():
+    return update(connection, request.form)
+
+
+def update(connection, update_data):
+    foo = update_data.to_dict()
+    a = []
+    b = []
+    a.append(list(foo.keys())[0])
+    b.append(list(foo.values())[1])
+    cursor = connection.cursor()
+    # update_details = "insert into order_page (serial_id,count) select serial_id, %s from items where name_of_items = %s", str(b[0]), str(a[0])
+    update_details = "insert into order_page (serial_id,count) select serial_id, {} from items where name_of_items = '{}'".format(b[0], a[0])
+    cursor.execute(update_details)
+    connection.commit()
+    cursor.close()
+    return update_details
+
+
 @app.route('/vendor_validation_juice_world', methods=['POST'])
 def vendor_validation_juice_world():
     return checking_name_and_password_for_vendor_juice_world(connection, request.form)
