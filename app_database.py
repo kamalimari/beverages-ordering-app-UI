@@ -85,14 +85,21 @@ def update(connection, update_data):
     foo = update_data.to_dict()
     a = []
     b = []
-    a.append(list(foo.keys())[0])
-    b.append(list(foo.values())[1])
-    cursor = connection.cursor()
-    # update_details = "insert into order_page (serial_id,count) select serial_id, %s from items where name_of_items = %s", str(b[0]), str(a[0])
-    update_details = "insert into order_page (serial_id,count) select serial_id, {} from items where name_of_items = '{}'".format(b[0], a[0])
-    cursor.execute(update_details)
-    connection.commit()
-    cursor.close()
+    i = 0
+    j = 1
+    index = 0
+    if i != len(foo):
+        for k in range(len(foo)):
+            a.append(list(foo.keys())[i])
+            b.append(list(foo.values())[j])
+            cursor = connection.cursor()
+            update_details = "insert into order_page (serial_id,count) select serial_id, {} from items where name_of_items = '{}'".format(b[index], a[index])
+            cursor.execute(update_details)
+            connection.commit()
+            cursor.close()
+            i += 2
+            j += 2
+            index += 1
     return update_details
 
 
