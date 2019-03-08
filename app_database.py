@@ -45,27 +45,28 @@ def employee_validation_juice_world():
 
 def checking_name_and_password_juice_world(connection, validation_data):
     cursor = connection.cursor()
+
     cursor.execute(
         "select password from employee_details where password = %(password)s ",
         {'password': validation_data['password']})
     returned_cold = cursor.fetchall()
     cold_ = returned_cold[0]
-    insert_the_password_id = "insert into order_page (name_id) (select name_id from employee_details where password = %s)"
-    cursor.execute(insert_the_password_id, (cold_[0],))
-    connection.commit()
+    array_value = tuple(cold_)
+    array = array_value[0]
+    cursor.execute("select name_id from employee_details where password = {}".format(array))
+
+    password_id_from_database = cursor.fetchall()
+    id_ = tuple(password_id_from_database[0])
+    id_password = id_[0]
     cursor.close()
     if len(returned_cold) == 0:
         return render_template('welcome_page.html')
     else:
-        return hot_items()
-
-
-def hot_items():
-    rows = database_selected_hot_items()
-    cold_items = []
-    for row in rows:
-        cold_items.append(row[0])
-    return render_template("available_cold_items.html", items=cold_items)
+        rows = database_selected_hot_items()
+        cold_items_ = []
+        for row in rows:
+            cold_items_.append(row[0])
+        return render_template("available_cold_items.html", items=cold_items_, password_id_value=id_password)
 
 
 def database_selected_hot_items():
@@ -83,17 +84,19 @@ def update_to_order_page():
 
 def update(connection, update_data):
     foo = update_data.to_dict()
-    a = []
-    b = []
-    i = 0
-    j = 1
+    serial_id = []
+    count = []
+    password_id = []
+    i = 1
+    j = 2
     index = 0
     if i != len(foo):
         for k in range(len(foo)):
-            a.append(list(foo.keys())[i])
-            b.append(list(foo.values())[j])
+            serial_id.append(list(foo.keys())[i])
+            count.append(list(foo.values())[j])
+            password_id.append(list(foo.values())[0])
             cursor = connection.cursor()
-            update_details = "insert into order_page (serial_id,count) select serial_id, {} from items where name_of_items = '{}'".format(b[index], a[index])
+            update_details = "insert into order_page (serial_id, name_id, count) select serial_id, {}, {} from items where name_of_items = '{}'".format(password_id[0], count[index], serial_id[index])
             cursor.execute(update_details)
             connection.commit()
             cursor.close()
