@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/update_to_order_page" method="post">
+<ul>
+     <input type="hidden" name="password" value="{{password_id_value}}"/>
+   {% for item in items %}
+<li style="list-style-type:none;"><input type="checkbox" name="{{item}}">{{item}}
+
+    <input type='text' name='{{item}}quantity' id='number' value='0'/>
+<!--<input type='button' name='add' value='+'onclick="incrementValue()"/>-->
+    <!--<input type='button' name='subtract' onclick="decrementValue()" value='-'/>-->
+</li>
+    {% endfor %}
+</ul>
+    <input type="submit" value="Submit">
+</form>
+<script>
+function incrementValue()
+{
+var value = parseInt(document.getElementById('number').value);
+currentValue = value;
+currentValue++;
+document.getElementById('number').value = currentValue;
+}
+
+function decrementValue()
+{
+var value = parseInt(document.getElementById('number').value);
+currentValue = value;
+currentValue--;
+document.getElementById('number').value = currentValue;
+}
+</script>
+</body>
+</html>
+
+

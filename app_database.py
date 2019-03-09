@@ -66,7 +66,7 @@ def checking_name_and_password_juice_world(connection, validation_data):
         cold_items_ = []
         for row in rows:
             cold_items_.append(row[0])
-        return render_template("available_cold_items.html", items=cold_items_, password_id_value=id_password)
+        return render_template("available_items_display.html", items=cold_items_, password_id_value=id_password)
 
 
 def database_selected_hot_items():
@@ -111,11 +111,11 @@ def vendor_validation_juice_world():
     return checking_name_and_password_for_vendor_juice_world(connection, request.form)
 
 
-def checking_name_and_password_for_vendor_juice_world(connection, validation_data):
+def checking_name_and_password_for_vendor_juice_world(connection, validation_data_juice_world):
     cursor = connection.cursor()
     cursor.execute(
         "select vendor_password from vendor_details where vendor_password = %(password)s and shop_no = '1'",
-        {'password': validation_data['password']})
+        {'password': validation_data_juice_world['password']})
     returned_cold = cursor.fetchall()
     cursor.execute(
         "update items set is_available = 'yes' WHERE type = 'cold'")
@@ -218,21 +218,39 @@ def employee_validation_madras_coffee():
     return checking_name_and_password_madras_coffee(connection, request.form)
 
 
-def checking_name_and_password_madras_coffee(connection, validation_data):
+def checking_name_and_password_madras_coffee(connection, validation_data_madras_coffee):
     cursor = connection.cursor()
+
     cursor.execute(
         "select password from employee_details where password = %(password)s ",
-        {'password': validation_data['password']})
+        {'password': validation_data_madras_coffee['password']})
     returned_hot = cursor.fetchall()
     hot_ = returned_hot[0]
-    insert_the_password_id = "insert into order_page (name_id) (select name_id from employee_details where password = %s)"
-    cursor.execute(insert_the_password_id, (hot_[0],))
-    connection.commit()
+    array_value = tuple(hot_)
+    array_hot = array_value[0]
+    cursor.execute("select name_id from employee_details where password = {}".format(array_hot))
+
+    password_id_from_database = cursor.fetchall()
+    id_ = tuple(password_id_from_database[0])
+    id_password = id_[0]
     cursor.close()
     if len(returned_hot) == 0:
         return render_template('welcome_page.html')
     else:
-        return render_template('ordering_page.html')
+        rows = database_selected_hot_items()
+        hot_items_ = []
+        for row in rows:
+            hot_items_.append(row[0])
+        return render_template("available_items_display.html", items=hot_items_, password_id_value=id_password)
+
+
+def database_selected_hot_items():
+    cursor = connection.cursor()
+    cursor.execute("select  name_of_items from items where is_available  ='yes' and type = 'hot'")
+    record = cursor.fetchall()
+    cursor.close()
+    return record
+
 
 
 @app.route('/vendor_validation_madras_coffee', methods=['POST'])
