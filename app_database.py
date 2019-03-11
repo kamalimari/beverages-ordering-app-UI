@@ -62,14 +62,14 @@ def checking_name_and_password_juice_world(connection, validation_data):
     if len(returned_cold) == 0:
         return render_template('welcome_page.html')
     else:
-        rows = database_selected_hot_items()
+        rows = database_selected_cold_items()
         cold_items_ = []
         for row in rows:
             cold_items_.append(row[0])
         return render_template("available_items_display.html", items=cold_items_, password_id_value=id_password)
 
 
-def database_selected_hot_items():
+def database_selected_cold_items():
     cursor = connection.cursor()
     cursor.execute("select  name_of_items from items where is_available  ='yes' and type = 'cold'")
     record = cursor.fetchall()
@@ -90,19 +90,20 @@ def update(connection, update_data):
     i = 1
     j = 2
     index = 0
-    if i != len(foo):
-        for k in range(len(foo)):
-            serial_id.append(list(foo.keys())[i])
-            count.append(list(foo.values())[j])
-            password_id.append(list(foo.values())[0])
-            cursor = connection.cursor()
-            update_details = "insert into order_page (serial_id, name_id, count) select serial_id, {}, {} from items where name_of_items = '{}'".format(password_id[0], count[index], serial_id[index])
-            cursor.execute(update_details)
-            connection.commit()
-            cursor.close()
-            i += 2
-            j += 2
-            index += 1
+    for k in range(len(foo)):
+        serial_id.append(list(foo.keys())[i])
+        count.append(list(foo.values())[j])
+        password_id.append(list(foo.values())[0])
+        cursor = connection.cursor()
+        update_details = "insert into order_page (serial_id, name_id, count) select serial_id, {}, {} from items where name_of_items = '{}'".format(password_id[0], count[index], serial_id[index])
+        cursor.execute(update_details)
+        connection.commit()
+        cursor.close()
+        i += 2
+        j += 2
+        index += 1
+        if i == len(foo):
+            return render_template("welcome_page.html")
     return update_details
 
 
@@ -145,7 +146,8 @@ def database_connection_cold():
 
 @app.route('/update_cold', methods=['POST'])
 def update_cold():
-    update_cold_availability_to_database(connection, request.form)
+    row = update_cold_availability_to_database(connection, request.form)
+    return render_template("welcome_page.html", rows=row)
 
 
 def update_cold_availability_to_database(connection, update_data):
@@ -157,6 +159,7 @@ def update_cold_availability_to_database(connection, update_data):
     cursor.execute(update_yes, (array,))
     connection.commit()
     cursor.close()
+    return update_yes
 
 
 @app.route('/juice_world_report')
@@ -177,13 +180,6 @@ def calculation_juice():
     cost = cursor.fetchall()
     cursor.close()
     return cost
-
-
-
-
-
-
-
 
 
 
@@ -291,8 +287,8 @@ def database_connection_hot():
 
 @app.route('/update_hot', methods=['POST'])
 def update_hot():
-    return update_hot_availability_to_database(connection, request.form)
-
+    update_atlast_ = update_hot_availability_to_database(connection, request.form)
+    return render_template("welcome_page.html", update_last=update_atlast_)
 
 def update_hot_availability_to_database(connection, update_data):
     cursor = connection.cursor()
@@ -303,6 +299,8 @@ def update_hot_availability_to_database(connection, update_data):
     cursor.execute(update_yes, (array,))
     connection.commit()
     cursor.close()
+    return update_yes
+
 
 
 @app.route('/madras_coffee_report')
