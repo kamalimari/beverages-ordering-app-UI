@@ -1,87 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-      <link rel="stylesheet" href="../static/css/ordering_page.css">
-<script src="../static/script/increment_and_decrement_of_cart.js">
-</script>
-</head>
-<body>
-<h1>JUICE WORLD</h1>
-
-
-<div class="row" >
+<html>
+   <head>
+       <meta charset="utf-8" />
+       <title>Test</title>
+        <link rel="stylesheet" href="../static/css/ordering_page.css">
+   </head>
+   <body>
+    <form action="/post-juice" method=post>
+       <div class="row" >
 
     <div class="column">
-        <input type="image" src="../static/assets/images/orangejuice.jpg" alt="orange" width="100%" height="198px" >
+        <input type="image"  src="../static/assets/images/orangejuice.jpg" class="button"  name = "juice" value=orange alt="orange" width="100%" height="198px" >
         <figcaption>Orange Juice </figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
     </div>
 
 
     <div class="column">
-         <input type="image" src="../static/assets/images/banana-juice.jpg" alt="banana" width="100%" height="198px">
+         <input type="image" src="../static/assets/images/banana-juice.jpg" class="button" name = "juice" value="banana"alt="banana" width="100%" height="198px">
         <figcaption>Banana Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
     </div>
 
-
-    <div class="column">
-         <input type="image" src="../static/assets/images/pineapple.jpg" alt="pineapple" width="100%" height="198px">
+           <div class="column"class="button" value="pineapple" >
+         <input type="image" src="../static/assets/images/pineapple.jpg" class="button" name = "juice" value="pineapple" alt="pineapple" width="100%" height="198px">
         <figcaption>Pineapple Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/kiwi.jpg" alt="kiwi" width="100%" height="198px">
+    <div class="column"class="button" value="kiwi">
+         <input type="image" src="../static/assets/images/kiwi.jpg" class="button" name = "juice" value="kiwi" alt="kiwi" width="100%" height="198px">
         <figcaption>Kiwi Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/lemon.jpg" alt="lemon" width="100%" height="198px">
+    <div class="column"class="button" value="lemon">
+         <input type="image" src="../static/assets/images/lemon.jpg" class="button" name = "juice" value="lemon" alt="lemon" width="100%" height="198px">
         <figcaption>Lemon Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/mango.jpg" alt="mango" width="100%" height="198px">
+    <div class="column"class="button" value="mango">
+         <input type="image" src="../static/assets/images/mango.jpg" class="button" name = "juice" value="mango" alt="mango" width="100%" height="198px">
         <figcaption>Mango Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/mosambi_juice.jpg" alt="mosambi" width="100%" height="198px">
+    <div class="column"class="button" value="mosambi">
+         <input type="image" src="../static/assets/images/mosambi_juice.jpg" class="button" name = "juice" value="mosambi" alt="mosambi" width="100%" height="198px">
         <figcaption>mosambi Juice</figcaption>
-        <input type = "image" class="order" src="jpg_html_files/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/pomegranate.jpg" alt="pomengranate" width="100%" height="198px">
+    <div class="column"class="button" value="pomengranate">
+         <input type="image" src="../static/assets/images/pomegranate.jpg" class="button" name = "juice" value="pomengranate" alt="pomengranate" width="100%" height="198px">
         <figcaption>Pomengranate Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <div class="column">
-         <input type="image" src="../static/assets/images/apple.jpg" alt="apple" width="100%" height="198px">
+    <div class="column"class="button" value="apple">
+         <input type="image" src="../static/assets/images/apple.jpg" class="button" name = "juice" value="apple" alt="apple" width="100%" height="198px">
         <figcaption>Apple Juice</figcaption>
-        <input type = "image" class="order" src="../static/assets/images/order_now.jpg" alt="order_now" style="width:100px; ">
      </div>
 
-    <form id="cart">
-<input type='text' name='quantity' id='quantity' value='1' readonly = 'readonly'/>
-<input type='button' name='addition' value='+'onclick=increment_buttons()/>
-<input type='button' name='subtract' value='-' onclick=decrement_buttons()/>
+
+       </div>
+       <script>
+           var buttons = document.getElementsByClassName('button');
+           for (var i=0 ; i < buttons.length ; i++){
+             (function(index){
+               buttons[index].onclick = function(){
+                var x = document.createElement("textArea");
+                var y = buttons[index].value;
+                var t = document.createTextNode(y);
+                x.append(t);
+                document.body.append(x);
+               };
+             })(i)
+           }
+       </script>
+</form>
+   </body>
+</html>
+<script>
+function incrementValue()
+{
+var value = parseInt(document.getElementById('number').value);
+currentValue = value;
+currentValue++;
+document.getElementById('number').value = currentValue;
+}
+
+function decrementValue()
+{
+var value = parseInt(document.getElementById('number').value);
+currentValue = value;
+currentValue--;
+document.getElementById('number').value = currentValue;
+}
+ var buttons = document.getElementsById('button');
+           for (var i=0 ; i < buttons.length ; i++){
+             (function(index){
+               buttons[index].onclick = function(){
+                var x = document.createElement("textArea");
+                var y = buttons[index].value;
+                var t = document.createTextNode(y);
+                x.append(t);
+                document.body.append(x);
+               };
+             })(i)
+           }
+
+</script>
+
+<form >
+<input type='text' name='quantity' id='number' value='1' readonly = 'readonly'/>
+<input type='button' name='add' value='+'onclick="incrementValue()"/>
+<input type='button' name='subtract' onclick="decrementValue()" value='-'/>
 </form>
 
-
-
-
-
-
-
-
-</body>
-</html>

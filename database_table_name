@@ -2,17 +2,26 @@ database name: beverages
     create database beverages;
 
 employee details(table);
-create table employee_details(name_id numeric,employee_name varchar(30),password numeric,primary key(name_id));
+create table employee_details(name_id integer,employee_name varchar(30),password integer,primary key(name_id));
 
 
 items (table):
-create table items(is_available varchar(10),serial_id serial,type varchar(30),id numeric,name_of_items varchar(30),cost numeric,primary key(serial_id));
+create table items(is_available varchar(10),serial_id serial,type varchar(30),id integer,name_of_items varchar(30),cost integer,primary key(serial_id));
 
 order_page(table):
-create table order_page(date date default current_date,name_id numeric, serial_id integer,count numeric,foreign key(name_id) references employee_details(name_id),foreign key(serial_id) references items(serial_id));
+create table order_page(date date default current_date,name_id integer, serial_id integer,count integer,foreign key(name_id) references employee_details(name_id),foreign key(serial_id) references items(serial_id));
 
 insert values in items:
 insert into items values ('yes',default,'cold',1,'apple_juice',30),('yes',default,'cold',1,'pineapple_juice',40),('yes',default,'cold',1,'orange_juice',40),('yes',default,'hot',2,'tea',15),('yes',default,'hot',2,'coffee',15),('yes',default,'hot',2,'ginger_tea',18);
+
+shop_details:
+create table shop_details(shop_no integer, shop_name varchar(50), primary key(shop_no));
+insert into shop_details values(1,'juice_world'),(2,'madras_coffee');
+
+vendor_details:
+create table vendor_details(id serial, vendor_password integer, vendor_name varchar(50),shop_no numeric,foreign key(shop_no) references shop_details(shop_no));
+insert into vendor_details values(default,1111,'nizia',1),(default,3333,'clitori',2);
+
 
 inner join:
 select * from items inner join order_page on items.serial_id = order_page.serial_id;

@@ -3,8 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      <link rel="stylesheet" href="../static/css/login_page.css">
+  <script>
 
+
+</script>
+
+</head>
+
+
+<body>
+<form action="/storing_guest_name" method=post>
+  <div style="max-width:500px;margin:auto" >
+  <h1>Login</h1>
+
+  <!--<div class="align_using_flex">-->
+    <!--<i class="fa fa-user icon"></i>-->
+    <!--<input class="input-field" type="text" placeholder="guest-name" name="guest_name">-->
+  <!--</div>-->
+      <button onclick="myFunction()">click here</button>
+      <button type="submit" class="button1" style="height:60px">Login</button>
+  </div>
+</form>
+<script>
+function myFunction() {
+  var x = document.createElement("INPUT");
+  x.setAttribute("type", "text");
+  x.setAttribute("value", "guest_name-");
+   x.setAttribute("name", "guest name-");
+  document.body.append(x);
+}
+</script>
 </body>
 </html>
+

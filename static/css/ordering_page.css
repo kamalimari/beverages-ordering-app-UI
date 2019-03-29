@@ -7,9 +7,7 @@ color: #ff0000;
   box-sizing: border-box;
 }
 
-.order{
-width:200px;
-}
+
 .column {
 
   width:27%;
@@ -26,7 +24,7 @@ width:200px;
  background-color: #fff0ff;
  border: 5px solid red;
  width:70%;
- background: url("jpg_css_files/pale_pink_background.jpg") no-repeat fixed center;
+ background: url("../assets/images/pale_pink_background.jpg") no-repeat fixed center;
   background-size:cover;
  float:left;
  box-sizing:border-box;
